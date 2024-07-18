@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BehaviourTree : MonoBehaviour
 {
+    public Blackboard Blackboard { get { return _blackboard; } }
+    
     [SerializeField] private Blackboard _blackboard;
     
     private RootNode _rootNode;

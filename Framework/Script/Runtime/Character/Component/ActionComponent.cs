@@ -78,12 +78,20 @@ public partial class ActionComponent : BaseComponent
 
             if (_IsAttackAction())
             {
-                
+                if (Character.TargetComponent.Target != null)
+                {
+                    Character.RotateComponent?.RotationToTarget(Character.TargetComponent.Target);
+                }
+
+                if (IsCurrentActionAttribute(GlobalEnum.eActionAttribute.Attack))
+                {
+                    
+                }
             }
         }
         catch (OperationCanceledException e)
         {
-            
+            DebugManager.LogError(e.Message);
         }
     }
 

@@ -50,6 +50,7 @@ public class XmlUtil
         }
         catch (Exception e)
         {
+            DebugManager.LogError(e.Message);
             return false;
         }
         return true;
