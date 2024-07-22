@@ -11,6 +11,11 @@ public static class GlobalEnum
         SkillEffect,
         Count
     }
+    /// <summary> 캐릭터 스탯 타입 </summary>
+    public enum eStatType
+    {
+        
+    }
     /// <summary> ActionChartData 진행에 필요한 데이터 타입  </summary>
     public enum eActionAttribute
     {

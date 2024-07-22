@@ -1,5 +1,8 @@
 
 //======================= Delegate =======================//
+
+using System.Collections.Generic;
+
 public delegate void Callback();
 public delegate void Callback_string(string s1);
 public delegate void Callback_int(int i1);
@@ -48,4 +51,13 @@ public struct stSkillInfoParam
     private string _key;
     private int _level;
     private ulong _uid;
+}
+
+/* Stat */
+public struct stStatLevel
+{
+    public GlobalEnum.eStatType Type { get { return _type; } set { _type = value; } }
+    public int Level { get { return _level; } set { _level = value; } }
+    private GlobalEnum.eStatType _type;
+    private int _level;
 }
