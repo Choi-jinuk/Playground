@@ -4,16 +4,21 @@ using UnityEngine;
 
 public partial class GameDataManager
 {
-    BaseManager _CreateTemplateManager(GlobalEnum.eTemplateManagerType type)
+    BaseManager _CreateOrGetTemplateManager(GlobalEnum.eTemplateManagerType type)
     {
         if (_templateDictionary.ContainsKey(type))
         {
-            DebugManager.LogError($"Duplicate Manager, ({type}) is Already Create Manager");
-            return null;
+            return _templateDictionary[type];
         }
         
         switch (type)
         {
+            case GlobalEnum.eTemplateManagerType.Character :
+                return new CharacterTemplateManager();
+            case GlobalEnum.eTemplateManagerType.StatSheet :
+                return new StatSheetManager();
+            case GlobalEnum.eTemplateManagerType.Skill :
+                return new SkillTemplateManager();
             case GlobalEnum.eTemplateManagerType.SkillEffect :
                 return new SkillEffectManager();
             default:

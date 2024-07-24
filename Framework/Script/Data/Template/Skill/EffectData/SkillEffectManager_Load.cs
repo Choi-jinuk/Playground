@@ -7,7 +7,7 @@ public partial class SkillEffectManager : BaseTemplateManager<SkillEffectManager
 {
     private Dictionary<string, SkillEffectData> _dataDictionary = new Dictionary<string, SkillEffectData>();
 
-    protected override bool _LoadData(JSONObject jsonObject)
+    protected override bool _LoadData(string fileName, JSONObject jsonObject)
     {
         foreach (KeyValuePair<string, JSONNode> data in jsonObject)
         {

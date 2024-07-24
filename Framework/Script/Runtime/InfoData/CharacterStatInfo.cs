@@ -28,7 +28,19 @@ public class StatLevelInfo
 
 public class CharacterStatInfo
 {
-    private Dictionary<GlobalEnum.eStatType, double> _stat = new Dictionary<GlobalEnum.eStatType, double>();
     private StatLevelInfo _statLevel;
     private stCharacterInfoParam _param;
+
+    public void SetData(stCharacterInfoParam param, StatLevelInfo statLevel)
+    {
+        if (string.IsNullOrEmpty(param.Key))
+        {
+            DebugManager.LogError("Invalid data param");
+            return;
+        }
+
+        _param = param;
+        _statLevel = statLevel;
+        
+    }
 }

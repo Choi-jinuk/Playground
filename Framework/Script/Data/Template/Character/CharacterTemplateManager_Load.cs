@@ -6,7 +6,7 @@ using UnityEngine;
 public partial class CharacterTemplateManager : BaseTemplateManager<CharacterTemplateManager>
 {
     private Dictionary<string, CharacterTemplateData> _dataDictionary = new Dictionary<string, CharacterTemplateData>();
-    protected override bool _LoadData(JSONObject jsonObject)
+    protected override bool _LoadData(string fileName, JSONObject jsonObject)
     {
         foreach (KeyValuePair<string, JSONNode> data in jsonObject)
         {

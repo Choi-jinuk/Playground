@@ -7,6 +7,7 @@ using SimpleJSON;
 
 public partial class GameDataManager
 {
+    private List<string> _loadDataList = new List<string>();
     /// <summary> CRC(GameData를 압축하여 길이와 저장한 데이터)를 Local과 Cdn을 비교하여 GameData가 바뀌었는지 체크 </summary>
     public async UniTask CheckNewGameData()
     {
@@ -57,16 +58,35 @@ public partial class GameDataManager
 
         foreach (KeyValuePair<string, JSONNode> keyValuePair in jsonGameData)
         {
-            var key = Zip.Decompress(keyValuePair.Key);
+            var fileName = Zip.Decompress(keyValuePair.Key);
+            if (string.IsNullOrEmpty(fileName))
+                continue;
+            if (_loadDataList.Contains(fileName))
+            {
+                DebugManager.LogError($"{fileName} is Duplicate");
+                continue;
+            }
+            var data = Zip.Decompress(keyValuePair.Value);
+            if (string.IsNullOrEmpty(data))
+                continue;
+        
+            var jsonObject = JSON.Parse(data) as JSONObject;
+            if (jsonObject == null)
+                continue;
+
+            string key = JsonLoader.GetString(jsonObject, GlobalString.ManagerType);
             if (EnumUtil.TryParse<GlobalEnum.eTemplateManagerType>(key, out var type) == false)
                 continue;
-            var manager = _CreateTemplateManager(type);
+            var manager = _CreateOrGetTemplateManager(type);
             if (manager == null)
                 continue;
-            
-            var data = Zip.Decompress(keyValuePair.Value);
-            manager.LoadData(data);
-            
+
+            if (manager.LoadData(fileName, jsonObject) == false)
+            {
+                DebugManager.LogError($"{type} Manager Load Error");
+            }
+
+            _loadDataList.Add(fileName);
             _templateDictionary[type] = manager;
         }
     }

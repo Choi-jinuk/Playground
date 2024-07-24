@@ -6,7 +6,7 @@ using UnityEngine;
 public partial class SkillTemplateManager : BaseTemplateManager<SkillTemplateManager>
 {
     private Dictionary<string, SkillTemplateData> _dataDictionary = new Dictionary<string, SkillTemplateData>();
-    protected override bool _LoadData(JSONObject jsonObject)
+    protected override bool _LoadData(string fileName, JSONObject jsonObject)
     {
         foreach (KeyValuePair<string, JSONNode> data in jsonObject)
         {

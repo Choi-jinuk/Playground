@@ -16,6 +16,7 @@ public class GlobalString
     public static string ACTION_CHART_PATH = "";
     public static string ANI_EVENT_PATH = "";
     
+    public static string ManagerType = "ManagerType";
     public static string Root = "Root";
     
     public static string ActionChart = "ActionChart";
@@ -46,4 +47,12 @@ public class GlobalString
     public static string MaxPoolSize = "MaxPoolSize";
 
     public static string SkillList = "SkillList";
+
+    public static string StatSheet = "StatSheet";
+    public static string StatLimit = "StatLimit";
+    public static string Stat = "Stat";
+    public static string LevelIncreaseStat = "LevelIncreaseStat";
+    
+    public static string Max = "Max";
+    public static string Min = "Min";
 }
