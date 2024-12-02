@@ -86,9 +86,9 @@ public class SelfCleanupInstance : MonoBehaviour
 
 public class SelfCleanup : MonoBehaviour
 {
-    public Sprite _sprite;
+    public Sprite sprite;
     private void OnDestroy()
     {
-        Addressables.Release(_sprite);
+        Addressables.Release(sprite);
     }
 }

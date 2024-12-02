@@ -1,24 +1,5 @@
-
-public static class GlobalEnum
+public static partial class GlobalEnum
 {
-    public enum eResourceDataType
-    {
-        Count
-    }
-    /// <summary> GameData 타입별 매니저 </summary>
-    public enum eTemplateManagerType
-    {
-        Character,
-        StatSheet,
-        Skill,
-        SkillEffect,
-        Count
-    }
-    /// <summary> 캐릭터 스탯 타입 </summary>
-    public enum eStatType
-    {
-        
-    }
     /// <summary> ActionChartData 진행에 필요한 데이터 타입  </summary>
     public enum eActionAttribute
     {
@@ -52,19 +33,5 @@ public static class GlobalEnum
         Success,
         Loop,
         Failed,
-    }
-    /// <summary> 행동트리 노드 진행 상황 </summary>
-    public enum eNodeState
-    {
-        Running,
-        Failure,
-        Success
-    }
-
-    /// <summary> 스킬 데이터 타입 </summary>
-    public enum eSkillType
-    {
-        Active,
-        Passive,
     }
 }

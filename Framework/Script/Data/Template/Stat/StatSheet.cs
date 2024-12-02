@@ -10,7 +10,7 @@ public class StatSheet
         public GlobalEnum.eStatType StatType;
         public int Type;
 
-        public double Stat;
+        public float Stat;
         public float LevelIncreaseStat;
     }
 
@@ -51,7 +51,7 @@ public class StatSheet
             {
                 StatType = statType,
                 Type = JsonLoader.GetInteger(nodeData, GlobalString.Type),
-                Stat = JsonLoader.GetDouble(nodeData, GlobalString.Stat),
+                Stat = JsonLoader.GetFloat(nodeData, GlobalString.Stat),
                 LevelIncreaseStat = JsonLoader.GetFloat(nodeData, GlobalString.LevelIncreaseStat),
             };
             

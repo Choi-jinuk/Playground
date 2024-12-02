@@ -85,7 +85,7 @@ public partial class ActionComponent : BaseComponent
 
                 if (IsCurrentActionAttribute(GlobalEnum.eActionAttribute.Attack))
                 {
-                    
+                    //_statAttackTime = Character.Info.GetStat()
                 }
             }
         }

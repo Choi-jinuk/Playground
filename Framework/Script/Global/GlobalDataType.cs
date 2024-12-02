@@ -2,6 +2,7 @@
 //======================= Delegate =======================//
 
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public delegate void Callback();
 public delegate void Callback_string(string s1);
@@ -9,6 +10,7 @@ public delegate void Callback_int(int i1);
 public delegate void Callback_float(float f1);
 public delegate void Callback_param1(System.Object p1);
 public delegate void Callback_SkillEffectObject(SkillEffectObject eo);
+public delegate void Callback_UI(PointerEventData action);
 
 /*  Server  */
 

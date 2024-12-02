@@ -71,6 +71,34 @@ public class GameObjectUtil
         return null;
     }
 
+    public static T FindChild<T>(GameObject parent, string childName) where T : Object
+    {
+        if (parent == null)
+        {
+            DebugManager.LogError($"FindChild() parent is Null Child name is {childName}");
+            return null;
+        }
+        
+        if (parent.name == childName)
+        {
+            var component = parent.GetComponent<T>();
+            if (component != null)
+                return component;
+        }
+        
+        foreach (Transform child in parent.transform)
+        {
+            if (child == null)
+                continue;
+
+            var component = FindChild<T>(child.gameObject, childName);
+            if (component != null)
+                return component;
+        }
+
+        return null;
+    }
+
     public static T FindComponentInChild<T>(GameObject parent, ref T component) where T : UnityEngine.Component
     {
         component = parent.GetComponent<T>();

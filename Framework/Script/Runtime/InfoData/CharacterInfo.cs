@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterInfo
+public partial class CharacterInfo
 {
     public string Key { get { return _infoParam.Key; } }
     public bool IsDead { get { return _currentHp <= 0; } }
@@ -12,6 +12,7 @@ public class CharacterInfo
     private CharacterTemplateData _data;
     private List<SkillInfo> _skillInfoList = new List<SkillInfo>();
 
+    private CharacterStatInfo _stat = new CharacterStatInfo();
     private double _currentHp;
     public void SetData(CharacterInstanceData instanceData)
     {
