@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
+using Object = UnityEngine.Object;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -13,8 +15,22 @@ public class UIManager : Singleton<UIManager>
 
     public void Init()
     {
+        InitPriority();
         
         InputManager.Instance.AddEscapeAction(_EscapeAction);
+    }
+
+    private void InitPriority()
+    {
+        for (int i = 0; i < (int)GlobalEnum.ePriorityType.Count; i++)
+        {
+            var priority = (GlobalEnum.ePriorityType)i;
+            if (_dicPriorityUI.ContainsKey(priority))
+                continue;
+            
+            if(_LoadPriority(priority) == false)
+                DebugManager.LogError("Priority is Not Load");
+        }
     }
 
     public BaseUI MakeUI(GlobalEnum.ePriorityType priorityType, GlobalEnum.eUIType uiType)
@@ -82,6 +98,20 @@ public class UIManager : Singleton<UIManager>
 
         _dicLoadUI[uiType] = handler;
         return handler;
+    }
+    private bool _LoadPriority(GlobalEnum.ePriorityType priorityType)
+    {
+        var goUI = AddressableManager.LoadPrefab(priorityType.ToString());
+        if (goUI == null)
+        {
+            DebugManager.LogError($"{priorityType.ToString()} Not Include Addressable");
+            return false; 
+        }
+
+        Object.DontDestroyOnLoad(goUI);
+        GameObjectUtil.RemoveCloneTag(goUI);
+        _dicPriorityUI[priorityType] = goUI;
+        return goUI;
     }
 
     public void RootUIDisable(GlobalEnum.ePriorityType priorityType)

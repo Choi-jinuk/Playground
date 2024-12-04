@@ -10,7 +10,7 @@ public class ActionXMLLoader
     {
         XmlUtil xml = new XmlUtil();
         
-        var assetList = await AddressableManager.LoadAssetList(GlobalString.ACTION_CHART_LIST);
+        var assetList = await AddressableManager.LoadAssetList(GlobalString.ACTION_CHART_LIST, false);
         foreach (var assetName in assetList.assets)
         {
             if (false == await xml.LoadAsset(assetName))

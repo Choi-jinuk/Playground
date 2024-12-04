@@ -18,6 +18,7 @@ public class PoolUtil<T> : IPoolDebug where T : IPoolComponent, new()
     private List<T> _totalList;
     private Stack<T> _enableList;
     private List<T> _usingList;
+    public List<T> usingList => _usingList;
 
     public void Init(int size)
     {

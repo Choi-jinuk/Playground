@@ -141,6 +141,12 @@ public class GameObjectUtil
         }
     }
 
+    public static void RemoveCloneTag(GameObject go)
+    {
+        go.name = go.name.Replace("(Clone)", "");
+        go.name.TrimEnd();
+    }
+
     public static void Destroy(GameObject go)
     {
         if (go == null)

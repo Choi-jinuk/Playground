@@ -40,7 +40,7 @@ public class XmlUtil
         FileName = filePath;
         _doc = new XmlDocument();
         string name = Path.GetFileNameWithoutExtension(filePath);
-        var asset = await AddressableManager.Load<TextAsset>(name);
+        var asset = await AddressableManager.Load<TextAsset>(name, false);
         var memoryStream = new MemoryStream(asset.bytes);
         var reader = XmlReader.Create(memoryStream);
         

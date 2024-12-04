@@ -2,6 +2,7 @@
 //======================= Delegate =======================//
 
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 
 public delegate void Callback();
@@ -30,6 +31,30 @@ public struct stLoadAnimEventParam
 {
     public System.Collections.Generic.Dictionary<string, CharacterAnimEventData> AniEventDictionary;
     public System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<AniEventDataElement>> CommonEvents;
+}
+
+public struct stDownloadData
+{
+    public string Label;
+    public long Size;
+}
+
+public class SoundData : IPoolComponent
+{
+    public AudioClip Clip;
+    public string Key;
+    public float Time;
+
+    public void SetData() => Clear();
+    public void ReleaseData() => Clear();
+    public void ClearData() => Clear();
+
+    private void Clear()
+    {
+        Clip = null;
+        Key = string.Empty;
+        Time = 0f;
+    }
 }
 
 /* Runtime */

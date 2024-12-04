@@ -11,6 +11,11 @@ public class GlobalString
     
     public static string CDN_ANDROID = "ANDROID/";
     public static string CDN_IOS = "IOS/";
+
+    public static string LOGO_SCENE = "LogoScene";
+    public static string TITLE_SCENE = "TitleScene";
+    public static string LOBBY_SCENE = "LobbyScene";
+    public static string GAME_SCENE = "gameScene";
     
     public static string ACTION_CHART_LIST = "";
     public static string ACTION_CHART_PATH = "";
@@ -55,4 +60,7 @@ public class GlobalString
     
     public static string Max = "Max";
     public static string Min = "Min";
+
+    public static string BgmVolume = "BgmVolume";
+    public static string EffectVolume = "EffectVolume";
 }
