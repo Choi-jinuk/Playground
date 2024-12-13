@@ -13,4 +13,17 @@ public static partial class GlobalEnum
         Failure,
         Success
     }
+
+    public enum eCountry
+    {
+        English,
+        Korea,
+        Count
+    }
+
+    public enum eSound
+    {
+        Sound_Button,
+        Sound_Button_Tab,
+    }
 }

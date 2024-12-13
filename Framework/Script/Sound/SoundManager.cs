@@ -82,42 +82,46 @@ public class SoundManager : MonoSingleton<SoundManager>
         if (_bgmSource != null)
             _bgmSource.Play();
     }
-    public void Play(string name)
+    public void Play(string soundName)
     {
         if (_sfxSource == null)
             return;
-        var clip = _GetClipByName(name);
+        if (string.IsNullOrEmpty(soundName))
+            return;
+        var clip = _GetClipByName(soundName);
         if (clip == null)
         {
-            DebugManager.LogError($"AudioClip is Null ({name})");
+            DebugManager.LogError($"AudioClip is Null ({soundName})");
             return;
         }
 
         var data = _soundPool.New();
         data.Clip = clip;
-        data.Key = name;
+        data.Key = soundName;
         data.Time = clip.length;
         
         _sfxSource.PlayOneShot(clip);
     }
 
-    public async void PlayBGM(string name)
+    public async void PlayBGM(string soundName)
     {
         if (!_bgmSource || !_nextBgm)
             return;
+        if (string.IsNullOrEmpty(soundName))
+            return;
         if (_bgmSource.clip == null)
         {
-            _bgmSource.clip = _GetClipByName(name);
+            _bgmSource.clip = _GetClipByName(soundName);
             _bgmSource.Play();
             return;
         }
         
-        if (_bgmSource.name.Equals(name))
+        if (_bgmSource.name.Equals(soundName))
         {
             return;
         }
 
-        _nextBgm.clip = _GetClipByName(name);
+        _nextBgm.clip = _GetClipByName(soundName);
         _nextBgm.mute = false;
 
         _changeBgmToken?.Cancel();
@@ -152,9 +156,9 @@ public class SoundManager : MonoSingleton<SoundManager>
         _changeBgmToken = null;
     }
 
-    AudioClip _GetClipByName(string name)
+    AudioClip _GetClipByName(string soundName)
     {
-        return AddressableManager.LoadImmediately<AudioClip>(name, false);
+        return AddressableManager.LoadImmediately<AudioClip>(soundName, false);
     }
 
     private async void Update()

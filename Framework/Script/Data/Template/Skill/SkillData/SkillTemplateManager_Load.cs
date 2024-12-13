@@ -28,7 +28,7 @@ public partial class SkillTemplateManager : BaseTemplateManager<SkillTemplateMan
                     return false;
                 }
                 
-                _dataDictionary.Add(data.Key, skillData);
+                _dataDictionary[skillData.Key] = skillData;
             }
         }
 

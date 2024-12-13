@@ -1,11 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using SimpleJSON;
 using UnityEngine;
 
-public partial class CharacterTemplateManager : BaseTemplateManager<CharacterTemplateManager>
+public partial class ItemTemplateManager
 {
-    private Dictionary<string, CharacterTemplateData> _dataDictionary = new Dictionary<string, CharacterTemplateData>();
+    private Dictionary<string, ItemTemplateData> _dataDictionary = new Dictionary<string, ItemTemplateData>();
+
     protected override bool _LoadData(string fileName, JSONObject jsonObject)
     {
         foreach (KeyValuePair<string, JSONNode> data in jsonObject)
@@ -21,17 +21,17 @@ public partial class CharacterTemplateManager : BaseTemplateManager<CharacterTem
             for (int i = 0; i < nodeCount; i++)
             {
                 JSONNode node = arrNode[i];
-                var characterData = CharacterTemplateData.Load(node);
-                if (characterData == null)
+                var itemData = ItemTemplateData.Load(node);
+                if (itemData == null)
                 {
-                    DebugManager.LogError($"CharacterTemplateData ({data.Key})_({i})Data Load Error");
+                    DebugManager.LogError($"ItemTemplateData ({data.Key})_({i})Data Load Error");
                     return false;
                 }
-                
-                _dataDictionary[characterData.Key] = characterData;
+
+                _dataDictionary[itemData.Key] = itemData;
             }
         }
-        
+
         return true;
     }
 }

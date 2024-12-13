@@ -29,7 +29,7 @@ public partial class SkillEffectManager : BaseTemplateManager<SkillEffectManager
                     return false;
                 }
                 
-                _dataDictionary.Add(effectData.Key, effectData);
+                _dataDictionary[effectData.Key] = effectData;
             }
         }
 

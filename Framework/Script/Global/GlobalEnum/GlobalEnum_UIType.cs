@@ -3,12 +3,13 @@ public static partial class GlobalEnum
     /// <summary> 로드할 Atlas 이름 </summary>
     public enum eUIAtlasName
     {
-        
+        Icon_Atlas,
+        Count,
     }
     /// <summary> UI 이름 등록 </summary>
     public enum eUIType
     {
-        
+        UI_Lobby_Bottom,
     }
     /// <summary> 각 UI Root Priority 타입 </summary>
     public enum ePriorityType
@@ -28,5 +29,11 @@ public static partial class GlobalEnum
         Down,
         Up,
         Drag,
+    }
+
+    public enum eUIAnimation
+    {
+        Scale,
+        Lobby_Tab,
     }
 }

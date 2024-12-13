@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.U2D;
 using Object = UnityEngine.Object;
@@ -16,6 +17,7 @@ public class UIManager : Singleton<UIManager>
     public void Init()
     {
         InitPriority();
+        InitAtlas().Forget();
         
         InputManager.Instance.AddEscapeAction(_EscapeAction);
     }
@@ -30,6 +32,21 @@ public class UIManager : Singleton<UIManager>
             
             if(_LoadPriority(priority) == false)
                 DebugManager.LogError("Priority is Not Load");
+        }
+    }
+
+    private async UniTaskVoid InitAtlas()
+    {
+        for (int i = 0; i < (int)GlobalEnum.eUIAtlasName.Count; i++)
+        {
+            var atlasType = (GlobalEnum.eUIAtlasName)i;
+            if (_dicAtlas.ContainsKey(atlasType))
+                continue;
+            var atlas = await AddressableManager.Load<SpriteAtlas>(atlasType.ToString("F"), false);
+            if (atlas == null)
+                return;
+            
+            _dicAtlas[atlasType] = atlas;
         }
     }
 
@@ -125,6 +142,21 @@ public class UIManager : Singleton<UIManager>
             if(ui.SelfObject)
                 ui.SelfObject.SetActive(false);
         }
+    }
+
+    public Sprite GetAtlasIconSprite(GlobalEnum.eUIAtlasName atlasName, string key)
+    {
+        if (string.IsNullOrEmpty(key))
+            return null;
+        if (_dicAtlas.ContainsKey(atlasName) == false)
+            return null;
+        var sprite = _dicAtlas[atlasName].GetSprite(key);
+        if (sprite == null)
+        {
+            DebugManager.LogError($"NullReferenceException: ({key}) Not In ({atlasName.ToString()})");
+            return null;
+        }
+        return sprite;
     }
     
     void _EscapeAction()

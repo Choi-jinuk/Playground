@@ -7,6 +7,7 @@ public static partial class GlobalEnum
         StatSheet,
         Skill,
         SkillEffect,
+        StringTable,
         Count
     } 
 }

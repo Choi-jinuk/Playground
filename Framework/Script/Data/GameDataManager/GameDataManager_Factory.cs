@@ -21,6 +21,8 @@ public partial class GameDataManager
                 return new SkillTemplateManager();
             case GlobalEnum.eTemplateManagerType.SkillEffect :
                 return new SkillEffectManager();
+            case GlobalEnum.eTemplateManagerType.StringTable :
+                return new StringTableManager();
             default:
                 return null;
         }

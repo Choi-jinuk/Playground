@@ -5,7 +5,7 @@ using UnityEngine;
 public class DataUtil
 {
     private static System.Random _random = new System.Random();
-    public static bool IsTestMode = false;
+    public static bool IsTestMode = true;
     
     public static bool IsAttr<T>(ulong attr, T compare)
     {
