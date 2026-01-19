@@ -1,0 +1,19 @@
+{
+  "name": "Playground.Framework.Runtime.Tests",
+  "rootNamespace": "Playground.Framework.Tests",
+  "references": [
+    "Playground.Framework.Runtime"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}
