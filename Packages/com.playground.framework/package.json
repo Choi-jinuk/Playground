@@ -1,0 +1,10 @@
+{
+  "name": "com.playground.framework",
+  "displayName": "Playground Framework",
+  "version": "0.1.0",
+  "unity": "2021.3",
+  "description": "Runtime and editor framework code for Playground.",
+  "author": {
+    "name": "Playground"
+  }
+}

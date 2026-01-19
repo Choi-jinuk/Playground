@@ -1,0 +1,22 @@
+{
+  "name": "Playground.Framework.Editor.Tests",
+  "rootNamespace": "Playground.Framework.Tests",
+  "references": [
+    "Playground.Framework.Runtime",
+    "Playground.Framework.Editor"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}
